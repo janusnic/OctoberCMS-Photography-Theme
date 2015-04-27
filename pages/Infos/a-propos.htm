@@ -1,0 +1,71 @@
+title = "À propos"
+url = "/a-propos"
+layout = "simple-2-columns"
+hidden = "0"
+menu_order = "7"
+
+[facebook_page_box]
+width = "500"
+hide_cover_photo = "0"
+show_friends_faces = "1"
+show_page_posts = "0"
+==
+{% content "a-propos.html" %}
+
+{% put right_column %}
+{% if not 
+(
+(this.theme.site_owner_phone is empty) and 
+(this.theme.site_owner_email is empty) and 
+(this.theme.site_owner_adress_street is empty) and 
+(this.theme.site_owner_adress_zip is empty) and 
+(this.theme.site_owner_adress_city is empty) and 
+(this.theme.site_owner_adress_country is empty)
+)
+%}
+<div class="vcard">
+
+    <div class ="vcard-header">
+        <h1>Coordonnées</h1>
+    </div>
+
+    <div class ="vcard-content">
+        {% if not (this.theme.site_owner_phone is empty) %}
+        <img class="glyph" alt="cellphone" src="{{'assets/images/util/cellphone.png'|theme }}">
+        <span>{{ this.theme.site_owner_phone }}</span> <br>     
+        {% endif %}
+
+        {% if not (this.theme.site_owner_email is empty) %}
+        <img class="glyph" alt="email" src="{{'assets/images/util/email.png'|theme }}">
+        <span>
+            <a class="link" href="/contact">{{this.theme.site_owner_email}}</a>
+        </span> <br>
+        {% endif %}
+
+        {% if not (this.theme.site_owner_address_street is empty)%}
+        <img style="vertical-align: top!important;" class="glyph" alt="mail" src="{{'assets/images/util/mail.png'|theme }}">           
+        <div style="display: inline-block;">
+            {{this.theme.site_owner_address_street|lower}}<br>
+            {{this.theme.site_owner_address_zip}} {{this.theme.site_owner_address_city|upper}}<br>
+            {{this.theme.site_owner_address_country|upper}}<br>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+{% component 'facebook_page_box' %}
+
+<div id="partenaire-de-mariage">
+    <a href="http://www.mariage.com" title="Robes, idées déco, bons plans et la plus grande communauté de futures mariées en France" target="_blank">
+        <img src="http://www.mariage.com/wp-content/uploads/2013/12/Mariage_partenaire-148x122.jpg" width="148" height="122" alt="Robes, idées déco, bons plans et la plus grande communauté de futures mariées en France" border="0">
+    </a>
+</div>
+
+
+{% endput %}
+
+{% put footer %}
+{% partial 'footer/social' %}
+{% partial 'footer/footer' %}
+{% endput %}
