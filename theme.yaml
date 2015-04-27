@@ -1,0 +1,63 @@
+name: Photography
+description: Manage and display photos
+author: Alexandre GADIOU
+homepage: 'http://alexandre-gadiou.appspot.com'
+
+require:
+    - Algad.Bootstrap
+    - Algad.FacebookComponents
+
+form:
+    fields:
+
+    tabs:
+        fields:
+
+            site_name:
+                label: Site name
+                default: SiteName
+                tab: General Settings
+
+            site_favicon:
+                label: Favicon
+                tab: General Settings
+
+            site_owner:
+                label: Author
+                tab: Author
+
+            site_owner_phone:
+                label: Phone
+                tab: Author
+
+            site_owner_email:
+                label: Email
+                tab: Author
+
+            site_owner_address_street:
+                label: Street
+                tab: Author
+
+            site_owner_address_zip:
+                label: Zip
+                tab: Author
+
+            site_owner_address_city:
+                label: City
+                tab: Author
+
+            site_owner_address_country:
+                label: Country
+                tab: Author
+
+            header_title:
+                label: Header title
+                tab: Advanced Settings
+
+            header_sub_title:
+                label: Header sub-title
+                tab: Advanced Settings
+
+            site_author:
+                label: Powered by
+                tab: Site infos
