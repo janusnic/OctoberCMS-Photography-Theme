@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% partial "head" %}
+    </head>
+
+    <body id="{{ this.page.id|lower }}" class="{{ this.page.layout }}">
+
+        {% partial "header" %}
+        {% partial "menu" %}
+
+        <!-- Content -->
+        <section class="page-content">
+            {% placeholder page_content %}
+        </section>
+
+        {% placeholder footer %}
+        {% partial "javascript" %}
+
+    </body>
+</html>
