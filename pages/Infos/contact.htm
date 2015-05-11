@@ -3,6 +3,16 @@ url = "/contact"
 layout = "simple"
 hidden = "0"
 menu_order = "8"
-not_show_menu = "0"
+
+[contactform]
+recipient_email = "alexandregadiou44@icloud.com"
+email_sent_confirmation = "Votre email a été envoyé avec succès"
+email_sent_failed = "L'envoi de l'email a échoué"
 ==
-Page contact
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-offset-4 col-md-4">
+            {% component 'contactform' %}
+        </div>
+    </div>
+</div>
