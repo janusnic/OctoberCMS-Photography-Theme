@@ -1,0 +1,31 @@
+{% put page_content %}
+<div class="container">
+    {% page %}
+</div>
+{% endput %}
+
+{% put page_javascript %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.fadeeffect').find('.album-caption').hide();
+        $('.fadeeffect').hover(
+                function () {
+                    $(this).find('.album-caption').fadeIn(250);
+                },
+                function () {
+                    $(this).find('.album-caption').fadeOut(250);
+                }
+        );
+
+        $('.album-caption').mouseenter(
+                function () {
+                    $(this).css('background-color', 'rgba(0,0,0,0.5)');
+                }
+        ).mouseleave(function () {
+            $(this).css('background-color', 'rgba(0,0,0,0)');
+        });
+    });
+</script>
+{% endput %}
+
+{% partial 'layouts/base.htm' description="Album list" %}
