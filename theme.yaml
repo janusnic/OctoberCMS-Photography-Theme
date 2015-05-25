@@ -4,8 +4,9 @@ author: Alexandre GADIOU
 homepage: 'http://alexandre-gadiou.appspot.com'
 
 require:
+    - Algad.PhotographyComponents
     - Algad.Bootstrap
-    - Algad.FacebookComponents
+    - Algad.Facebook
 
 form:
     fields:
