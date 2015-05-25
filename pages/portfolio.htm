@@ -1,12 +1,10 @@
 title = "Portfolio"
 url = "/portfolio"
-layout = "simple"
+layout = "album-list"
 hidden = "0"
 menu_order = "2"
 
+[album_list]
+albums_folder = "storage/app/media/portfolio"
 ==
-Page = Portfolio<br>
-
-<!-- TODO [album_list]
-albums_folder = "photography/portfolio"-->
-<!--{% component "album_list" %}-->
+{% component 'album_list' %}
