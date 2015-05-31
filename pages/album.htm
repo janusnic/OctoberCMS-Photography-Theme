@@ -1,0 +1,17 @@
+title = "Album"
+url = "/album"
+layout = "album-list"
+albums_folder = "storage/app/media"
+
+[album]
+album_folder = {{folder}}
+==
+<?php
+function onStart()
+{
+$this['folder'] = $_GET["path"];
+}
+?>
+==
+
+{% component 'album' album_folder=folder %}
