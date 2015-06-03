@@ -23,7 +23,12 @@
     }
 
     .carousel-control {
-        .border-radius(@phy-carousel-border-radius,@phy-carousel-border-radius,@phy-carousel-border-radius,@phy-carousel-border-radius);
+        &.left {
+            .border-radius(@phy-carousel-border-radius,0,0,@phy-carousel-border-radius);
+        }
+        &.right {
+            .border-radius(0,@phy-carousel-border-radius,@phy-carousel-border-radius,0);
+        }
         background: none;
     }
 
