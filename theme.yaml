@@ -51,14 +51,6 @@ form:
                 label: Country
                 tab: Author
 
-            header_title:
-                label: Header title
-                tab: Advanced Settings
-
-            header_sub_title:
-                label: Header sub-title
-                tab: Advanced Settings
-
             site_author:
                 label: Powered by
                 tab: Site infos
