@@ -3,7 +3,12 @@ url = "/album"
 layout = "album-list"
 albums_folder = "storage/app/media"
 
-[album album]
+[album]
+album_folder = "storage/app/media"
+photos_width = "23.5%"
+photos_spacing = "0.5%"
+photos_info = "0"
+view = "folio"
 ==
 <?php
 function onStart()
@@ -12,5 +17,4 @@ $this['folder'] = $_GET["path"];
 }
 ?>
 ==
-
 {% component 'album' album_folder=folder %}
