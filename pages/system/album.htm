@@ -1,10 +1,11 @@
 title = "Album"
 url = "/album"
-layout = "album-list"
+layout = "simple"
 albums_folder = "storage/app/media"
 
 [album]
 album_folder = "storage/app/media"
+gallery_height = "500px"
 photos_width = "23.5%"
 photos_spacing = "0.5%"
 photos_info = "0"
@@ -13,7 +14,14 @@ view = "folio"
 <?php
 function onStart()
 {
+
+if(isset($_GET['path'])) {
 $this['folder'] = $_GET["path"];
+}
+else {
+$this['folder']= "";
+}
+
 }
 ?>
 ==
