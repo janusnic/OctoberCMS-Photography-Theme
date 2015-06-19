@@ -9,11 +9,9 @@ require:
     - Algad.Facebook
 
 form:
-    fields:
-
+        
     tabs:
         fields:
-
             site_name:
                 label: Site name
                 default: SiteName
