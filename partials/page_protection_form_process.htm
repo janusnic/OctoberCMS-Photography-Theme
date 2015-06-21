@@ -1,0 +1,18 @@
+==
+function onStart()
+{
+$this->page->addVisible('protectionCode');
+$this['encodedProtectionCode'] = sha1($this->submitedCode);
+}
+?>
+==
+
+{% if submitedCode == this.page.protectionCode %}
+<script>
+    window.location.href = '{{this.page.url}}?protectionCode={{encodedProtectionCode}}';
+</script>
+{% else %}
+<script>
+    window.location.href = '{{this.page.url}}?error=invalid_password';
+</script>
+{% endif %}

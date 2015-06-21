@@ -1,6 +1,44 @@
+==
+<?php
+function onShowContent()
+{
+$this['submitedCode'] = post('codeProtection');
+}
+
+function onStart()
+{
+
+$this->page->addVisible('protectionCode');
+
+$this['hasAccess'] = false;
+if(isset($_GET['protectionCode'])) {
+if($_GET['protectionCode'] == sha1($this->page->protectionCode) ){
+$this['hasAccess']= true;
+}
+}
+
+if(empty($this->page->protectionCode)) {
+$this['hasAccess']= true;
+}
+
+if(isset($_GET['error'])) {
+$this['errorCode']= $_GET['error'];
+}
+
+
+}
+?>
+==
+
+
 {% put page_content %}
 <div class="container">
+    {% if (hasAccess) %}
     {% page %}
+    {% endif %}
+    {% if (not hasAccess) %}
+    {% partial 'page_protection_form' %}
+    {% endif %}
 </div>
 {% endput %}
 
