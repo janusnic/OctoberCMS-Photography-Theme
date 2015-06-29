@@ -1,24 +1,46 @@
 ==
 <?php
+
 function onShowContent()
 {
-$this['submitedCode'] = post('codeProtection');
+$this->page->addVisible('protectionCode');
+$pageCode = $this->page->protectionCode;
+$submitCode = post('codeProtection');
+
+$this['hasAccess']=false;
+if($pageCode == $submitCode) {
+$this['hasAccess']=true;
+$this['hasAccessTo']=$this->page->id;
+}
+
 }
 
 function onStart()
 {
+session_start();
 
 $this->page->addVisible('protectionCode');
+$pageCode = $this->page->protectionCode;
+
+if(!empty($pageCode)){
+$this['emptyCode'] = false;
+} else {
+$this['emptyCode'] = true;
+}
 
 $this['hasAccess'] = false;
-if(isset($_GET['protectionCode'])) {
-if($_GET['protectionCode'] == sha1($this->page->protectionCode) ){
-$this['hasAccess']= true;
-}
-}
+if(isset($_SESSION['hasAccess']) and isset($_SESSION['hasAccessTo'])) {
+$this['hasAccess']= $_SESSION['hasAccess'];
+$this['hasAccessTo']= $_SESSION['hasAccessTo'];
 
-if(empty($this->page->protectionCode)) {
-$this['hasAccess']= true;
+if($this['hasAccess'] and $this['hasAccessTo']==$this->page->id){
+$_SESSION['hasAccess'] = true;
+} else {
+$_SESSION['hasAccess'] = false;
+}
+$this['hasAccess']= $_SESSION['hasAccess'];
+$this['hasAccessTo']= $_SESSION['hasAccessTo'];
+
 }
 
 if(isset($_GET['error'])) {
@@ -33,7 +55,7 @@ $this['errorCode']= $_GET['error'];
 {% put page_content %}
 
 
-{% if (hasAccess) %}
+{% if (hasAccess or emptyCode) %}
 <div class="row">
     <div class="col-xs-12 col-md-offset-2 col-md-4">
         {% page %}
@@ -43,7 +65,7 @@ $this['errorCode']= $_GET['error'];
     </div>
 </div>
 {% endif %}
-{% if (not hasAccess) %}
+{% if ( not emptyCode and not hasAccess ) %}
 <div class="container">
     {% partial 'page_protection_form' %}
 </div>

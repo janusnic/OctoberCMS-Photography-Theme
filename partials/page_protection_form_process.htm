@@ -1,17 +1,22 @@
 ==
+<?php 
 function onStart()
 {
-$this->page->addVisible('protectionCode');
-$this['encodedProtectionCode'] = sha1($this->submitedCode);
+session_start();
+$_SESSION['hasAccess'] = $this->hasAccess;
+$_SESSION['hasAccessTo'] = $this->hasAccessTo;
+
 }
 ?>
 ==
 
-{% if submitedCode == this.page.protectionCode %}
+{% if hasAccess %}
 <script>
-    window.location.href = '{{this.page.url}}?protectionCode={{encodedProtectionCode}}';
+    window.location.href = '{{this.page.url}}';
 </script>
-{% else %}
+{% endif %}
+
+{% if not hasAccess %}
 <script>
     window.location.href = '{{this.page.url}}?error=invalid_password';
 </script>
