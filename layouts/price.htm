@@ -1,0 +1,66 @@
+==
+<?php
+
+function onShowContent()
+{
+$this->page->addVisible('protectionCode');
+$pageCode = $this->page->protectionCode;
+$submitCode = post('codeProtection');
+
+$this['hasAccess']=false;
+if($pageCode == $submitCode) {
+$this['hasAccess']=true;
+$this['hasAccessTo']=$this->page->id;
+}
+
+}
+
+function onStart()
+{
+session_start();
+
+$this->page->addVisible('protectionCode');
+$pageCode = $this->page->protectionCode;
+
+if(!empty($pageCode)){
+$this['emptyCode'] = false;
+} else {
+$this['emptyCode'] = true;
+}
+
+$this['hasAccess'] = false;
+if(isset($_SESSION['hasAccess']) and isset($_SESSION['hasAccessTo'])) {
+$this['hasAccess']= $_SESSION['hasAccess'];
+$this['hasAccessTo']= $_SESSION['hasAccessTo'];
+
+if($this['hasAccess'] and $this['hasAccessTo']==$this->page->id){
+$_SESSION['hasAccess'] = true;
+} else {
+$_SESSION['hasAccess'] = false;
+}
+$this['hasAccess']= $_SESSION['hasAccess'];
+$this['hasAccessTo']= $_SESSION['hasAccessTo'];
+
+}
+
+if(isset($_GET['error'])) {
+$this['errorCode']= $_GET['error'];
+}
+
+}
+?>
+==
+
+
+{% put page_content %}
+<div class="container">
+    {% if (hasAccess or emptyCode) %}
+    {% page %}
+    {% endif %}
+    {% if ( not emptyCode and not hasAccess ) %}
+    {% partial 'page_protection_form' %}
+    {% endif %}
+</div>
+{% endput %}
+
+{% partial 'layouts/base.htm' description="Price" %}
