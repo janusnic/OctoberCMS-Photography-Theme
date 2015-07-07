@@ -7,5 +7,18 @@ menu_order = "30"
 [album_list]
 albums_folder = "storage/app/media/mariages"
 view = "default"
+
+[carousel]
+photos_folder = "storage/app/media/mariages/hidden_photosplayer"
+sliders = "1"
+indicators = "1"
+height = "500px"
+borderRadius = "0px"
 ==
+<h1>Mariages</h1>
+
+<div style="margin-bottom:45px;">
+    {% component 'carousel' %}
+</div>
+
 {% component 'album_list' %}
