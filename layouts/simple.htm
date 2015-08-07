@@ -3,7 +3,7 @@
 
 function onShowContent()
 {
-$this->page->addVisible('protectionCode');
+$this->page->fill(['protectionCode']);
 $pageCode = $this->page->protectionCode;
 $submitCode = post('codeProtection');
 
@@ -19,7 +19,7 @@ function onStart()
 {
 session_start();
 
-$this->page->addVisible('protectionCode');
+$this->page->fill(['protectionCode']);
 $pageCode = $this->page->protectionCode;
 
 if(!empty($pageCode)){
