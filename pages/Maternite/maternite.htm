@@ -1,10 +1,22 @@
 title = "Photos Maternité"
 url = "/maternite"
 layout = "simple"
-menu_order = "50"
+is_hidden = "0"
+menu_order = "40"
 
 [album_list]
 albums_folder = "storage/app/media/maternite"
 view = "default"
+
+[carousel]
+photos_folder = "storage/app/media/maternite/hidden_photosplayer"
+sliders = "1"
+indicators = "1"
+height = "500px"
+borderRadius = "0px"
 ==
+<div style="margin-bottom:45px;">
+    {% component 'carousel' %}
+</div>
+
 {% component 'album_list' %}
